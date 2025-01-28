@@ -1,13 +1,17 @@
-//afficher placeholder de input date pour la date actuelle
-function getCurrentDate() {
-    const today = new Date();
-    const year = today.getFullYear();
-    const month = String(today.getMonth() + 1).padStart(2, '0'); // Mois (0-indexé)
-    const day = String(today.getDate()).padStart(2, '0'); // Jour
-    return `${day}/${month}/${year}`;
-}
+//afficher la date de jour sur input date 
+function setTodayDate() {
+    const today = new Date(); 
+    const yyyy = today.getFullYear(); 
+    const mm = String(today.getMonth() + 1).padStart(2, '0'); 
+    const dd = String(today.getDate()).padStart(2, '0'); 
 
-const dateInput = document.querySelector('#dateChoisir');
-console.log(dateInput);
+    const formattedDate = `${yyyy}-${mm}-${dd}`; 
+    document.querySelector('#dateChoisir').value = formattedDate; 
+  }
 
-dateInput.setAttribute('placeholder', getCurrentDate());
+  window.onload = setTodayDate;
+
+//recuperer les champs des saisir pour la ville départ et la ville arrivée 
+document.querySelector(".buttonReseach").addEventListener('click', function () {
+   
+})
