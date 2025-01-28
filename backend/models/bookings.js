@@ -1,8 +1,7 @@
 const mongoose = require('mongoose');
 
 const bookingSchema = mongoose.Schema({
-    Id: { type: mongoose.Schema.Types.ObjectId, ref: 'trips' },
-    date:Date,
+    tripId: { type: mongoose.Schema.Types.ObjectId, ref: 'trips' },
     createDate: Date,
 });
 
