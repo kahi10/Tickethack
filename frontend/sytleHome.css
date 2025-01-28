@@ -71,7 +71,7 @@ p{
 }
 
 .divResach{
-    width: auto;
+    width: 15vw;
     height: auto;
     background-color:white;
     border-radius: 10px;
@@ -88,7 +88,7 @@ p{
 }
 
 .divResult{
-    width: auto;
+    width: 15vw;
     height: auto;
     background-color: white;
     text-align: center;
@@ -135,6 +135,9 @@ input[type="date"]{
     border: none;
     
 }
+.buttonReseach:hover {
+    cursor: pointer;
+  }
 
 .trips{
     background-color:rgb(231, 198, 229);
@@ -165,6 +168,21 @@ input[type="date"]{
     align-items: center;
 }
 
+
+.cartvide{
+    background-color: white;
+  margin: 30vh auto; /* Marge verticale pour centrer la div cartvide */
+  width: 50%;
+  height: 20vh;
+  text-align: center;  /* Centre le texte horizontalement */
+  display: flex;       /* Utilise flexbox pour le centrage */
+  justify-content: center; /* Centre le contenu horizontalement */
+  align-items: center
+}
+p{
+    line-height: 45px;
+
+}
 
 
 

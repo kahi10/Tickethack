@@ -116,3 +116,18 @@ body{
 #cartTrip{
     margin-left: 5px;
 }
+
+.cartvide{
+  background-color: white;
+  margin: 30vh auto; 
+  width: 50%;
+  height: 20vh;
+  text-align: center;  
+  display: flex;  
+  justify-content: center; 
+  align-items: center
+}
+p{
+    line-height: 30px;
+
+}

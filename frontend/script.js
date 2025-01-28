@@ -1,4 +1,4 @@
-//afficher la date de jour sur input date 
+//afficher la date du jour sur input date 
 function setTodayDate() {
     const today = new Date(); 
     const yyyy = today.getFullYear(); 
@@ -11,7 +11,15 @@ function setTodayDate() {
 
   window.onload = setTodayDate;
 
-//recuperer les champs des saisir pour la ville départ et la ville arrivée 
+//cliquer sur le butoon Reseach recuperer les champs des saisir pour la ville départ et la ville arrivée 
 document.querySelector(".buttonReseach").addEventListener('click', function () {
-   
+  const cityDepart = document.querySelector('#cityDeparture').value;
+  const CityArrivel= document.querySelector('#cityArrival').value; 
+  if(cityDepart===""||CityArrivel===""){
+      document.querySelector("#train").src = "./images/notfound.png";
+      document.querySelector("#train").alt = "notfound";
+      document.querySelector("h2").remove();
+
+  }
+
 })
