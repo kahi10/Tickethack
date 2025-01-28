@@ -1,0 +1,86 @@
+body{
+    height: 100vh;
+	width: 100vw;
+	margin: 0;
+    background-color: RGB(247, 249, 249);
+    font-family:'sans-serif';
+}
+p{
+    color:#008E97;
+    font-weight: bold;
+}
+
+#header{
+    display: flex;
+	justify-content:space-between;
+	align-items: center;
+	height: 5vh;
+	padding: 25px 30px 25px 30px;
+	color:black;
+	background-color:white;
+}
+
+#logo{
+    font-size: 30px;
+    font-weight: bolder;
+    color: #008E97;
+    align-self: flex-start;
+}
+
+#home{
+    text-decoration: none;
+}
+
+#cartNav{
+    text-decoration: none;
+    font-size: 20px;
+    align-self:flex-end;
+    margin: 20px;
+}
+
+#bookingNav{
+    text-decoration: none;
+    font-size: 20px;
+    align-self: flex-end;
+    margin: 20px;
+}
+
+.myBookings{
+    height: auto;
+    width: 56vw;
+    background-color:white;
+    margin-top: 15%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: gray 10px;
+    border: #001F3F;
+
+}
+
+
+.bookingSelect{
+    width: 65%;
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    background-color:#E7DADA;
+    align-items: center;
+    margin-bottom: 2%;
+    border-radius:5px;
+}
+
+#bookingTrip{
+    margin-left: 10px;
+}
+
+#calculateheursdepart{
+    margin-right: 10px;
+}
+
+
