@@ -36,9 +36,11 @@ document.querySelector(".buttonReseach").addEventListener('click', function () {
                 <span id="depAriv">${el.departure}>${el.arrival}</span>
                 <span id="heureTrip">${new Date(el.date).getHours()}:${new Date(el.date).getMinutes()}</span>
                 <span id="price">${el.price}€</span>
-                <button class="buttonBook">Book</button>
+                <p id='Idtrip'>${el._id}</p>
+                <button class="buttonBook" id=>Book</button>
             </div>
           `
+          selectTrip()
         });
       } 
   });
@@ -47,7 +49,17 @@ function selectTrip() {
   const results = document.querySelector('.trip');
   results.parentNode.querySelectorAll('.buttonBook').forEach(el => {
     el.addEventListener('click', function() {
-      console.log('test')
+      idTrip = this.parentNode.querySelector('#Idtrip').textContent
+      console.log(idTrip)
+      fetch('http://localhost:3000/carts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({_id: idTrip})
+      })
+      .then(response => response.json())
+      .then(data => {
+        window.location.assign('cart.html');
+      })
   });
 })
 }
