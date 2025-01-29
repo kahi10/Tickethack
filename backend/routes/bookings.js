@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
             trips.forEach(el => {
                 const newBooking = new Booking({
                     tripId: el.tripId,
-                    reservationDate:el.reservationDate
+                    reservationDate : el.reservationDate,
                 })
                 newBooking.save().then();
             });
