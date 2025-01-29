@@ -1,4 +1,5 @@
 var express = require('express');
+var moment = require('moment');
 const { checkBody } = require('../modules/checkbody');
 var router = express.Router();
 const Trip = require('../models/trips');
@@ -7,17 +8,16 @@ const Trip = require('../models/trips');
 router.get('/', function(req, res, next) {
   if (!checkBody(req.body, ['departure', 'arrival', 'date'])) {
     res.json({ result: false, error: 'Missing or empty fields' });
-        return
+    return
   }
-  Trip.find({'departure': {$regex: new RegExp(req.body.departure, "i")}, 'arrival': {$regex: new RegExp(req.body.arrival, "i")}})
+
+  const startOfDay = moment(req.body.date, 'DD/MM/YYYY').startOf('day').utc().toISOString();
+  const endOfDay = moment(req.body.date, 'DD/MM/YYYY').endOf('day').utc().toISOString();
+  
+  Trip.find({'departure': {$regex: new RegExp(req.body.departure, "i")}, 'arrival': {$regex: new RegExp(req.body.arrival, "i")}, 'date': { $gte: startOfDay, $lt: endOfDay }})
   .then(data => {
     if (data.length) {
-      //console.log(data[0].toString().includes(req.body.date.split('/').reverse().join('-')))
-        //let newData = data.filter(el => el.date.toString().includes(req.body.date.split('/').reverse().join('-')));
-        console.log(newData)
-        if (newData.length) {
-          res.json({ result: true, trip: newData}); 
-        }
+      res.json({ result: true, data: data});
     } else {
         res.json({ result: false, error: " no trip found" });
     }
