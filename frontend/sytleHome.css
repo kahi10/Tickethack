@@ -95,7 +95,7 @@ p{
     border-radius:10px;
     display:flex;
     flex-direction: column ;
-    justify-content:center;
+    justify-content:space-between;
     padding: 10px;
     overflow: auto;
     scroll-behavior: smooth;
@@ -146,10 +146,10 @@ input[type="date"]{
     background-color:rgb(231, 198, 229);
     width: auto;
     height: 3vh;
-    display: flex;
+    display:flex;
     flex-direction: row;
-    justify-content:space-around;
-    margin: 2px;
+    justify-content:space-between;
+    margin: 1px;
 }
 .buttonBook {
     height: 3vh;
@@ -157,7 +157,6 @@ input[type="date"]{
     font-size:10px;
     color:white;
     background-color: #008E97;
-    align-items: center;
     border: none;
     margin: 0;
     padding: 0;

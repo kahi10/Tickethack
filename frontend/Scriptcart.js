@@ -29,6 +29,7 @@ fetch("http://localhost:3000/carts")
                 document.querySelector(".myCarts").style.display = "flex";
                 document.querySelector('#totalPrice').textContent=`Total: ${totalPrice}€`;
                 DeleteCart();
+                selectBooking();
             }
         });
 
@@ -40,9 +41,13 @@ function DeleteCart(){
         button.addEventListener('click', function() {
             const tripElement=this.parentNode.parentNode;
             let idtripValue = document.getElementById("Idtrip").textContent;
-            
+            let priceText = document.querySelector("#cartPrice").textContent; 
+            let price = parseFloat(priceText.replace("€", "").trim());
+            let totalPriceText = document.querySelector("#totalPrice").textContent;
+            let totalPrice = parseFloat(totalPriceText.replace("Total:", "").replace("€", "").trim());
+            totalPrice-=price;
             tripElement.remove();
-            document.querySelector('#totalPrice').textContent=`Total:`;
+            document.querySelector('#totalPrice').textContent=`Total:${totalPrice}`;
 
             fetch('http://localhost:3000/carts', {
                 method: 'DELETE',
@@ -59,9 +64,25 @@ function DeleteCart(){
 
 
 
-
-//cliquer sur navigation booking pour afficher la page html booking et faire appeler methode get sur les collections bookings 
-document.querySelector('#bookingNav').addEventListener('click',function(){
-
-
-})
+// button purchase pour finaliser l'achat 
+function selectBooking() {
+    const purchaseButton = document.querySelector('#purchaseButton'); 
+    console.log(purchaseButton);
+    purchaseButton.addEventListener('click', function(){
+        const trips = document.querySelectorAll('.tripSelect');
+        const idTripValue = document.querySelectorAll('.idTrip').textContent;
+        trips.forEach(trip=>{
+            fetch('http://localhost:3000/bookings', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ tripId: idTripValue, reservationDate: new Date()}) 
+            })
+            .then(response => response.json())
+            .then(data => {
+                window.location.assign('booking.html');
+                console.log(data);
+            })
+        })
+        
+    })}
+    
