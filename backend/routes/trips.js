@@ -5,19 +5,18 @@ var router = express.Router();
 const Trip = require('../models/trips');
 
 //GET trips
-router.get('/', function(req, res, next) {
-  if (!checkBody(req.body, ['departure', 'arrival', 'date'])) {
+router.get('/:departure/:arrival/:date', function(req, res, next) {  
+  if (!checkBody(req.params, ['departure', 'arrival', 'date'])) {
     res.json({ result: false, error: 'Missing or empty fields' });
     return
   }
 
-  const startOfDay = moment(req.body.date, 'DD/MM/YYYY').startOf('day').utc().toISOString();
-  const endOfDay = moment(req.body.date, 'DD/MM/YYYY').endOf('day').utc().toISOString();
-  
-  Trip.find({'departure': {$regex: new RegExp(req.body.departure, "i")}, 'arrival': {$regex: new RegExp(req.body.arrival, "i")}, 'date': { $gte: startOfDay, $lt: endOfDay }})
+  const startOfDay = moment(req.params.date, 'YYYY-MM-DD').startOf('day').utc().toISOString();
+  const endOfDay = moment(req.params.date, 'YYYY-MM-DD').endOf('day').utc().toISOString();
+  Trip.find({'departure': {$regex: new RegExp(req.params.departure, "i")}, 'arrival': {$regex: new RegExp(req.params.arrival, "i")}, 'date': { $gte: startOfDay, $lt: endOfDay }})
   .then(data => {
     if (data.length) {
-      res.json({ result: true, data: data});
+      res.json({ result: true, trips: data});
     } else {
         res.json({ result: false, error: " no trip found" });
     }

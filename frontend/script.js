@@ -14,12 +14,40 @@ function setTodayDate() {
 //cliquer sur le butoon Reseach recuperer les champs des saisir pour la ville départ et la ville arrivée 
 document.querySelector(".buttonReseach").addEventListener('click', function () {
   const cityDepart = document.querySelector('#cityDeparture').value;
-  const CityArrivel= document.querySelector('#cityArrival').value; 
-  if(cityDepart===""||CityArrivel===""){
-      document.querySelector("#train").src = "./images/notfound.png";
-      document.querySelector("#train").alt = "notfound";
-      document.querySelector("h2").remove();
-
+  const cityArrivel = document.querySelector('#cityArrival').value;
+  const cityDate =  document.querySelector('#dateChoisir').value;
+  const notFoundHTML = () => {
+    document.querySelector('#train').src = './images/notfound.png';
+    document.querySelector('h2').textContent = 'No trip found';
+  };
+  if (!cityDepart || !cityArrivel || !cityDate) {
+    notFoundHTML();
   }
-
+  fetch(`http://localhost:3000/trips/${cityDepart}/${cityArrivel}/${cityDate}`)
+  .then(response => response.json())
+  .then(data => {
+      if (!data.trips.length) {
+        notFoundHTML();
+      } else {
+        document.querySelector('.divResult').innerHTML = '';
+        data.trips.forEach(el => {
+          document.querySelector('.divResult').innerHTML += `
+            <div class="trip">
+                <span id="depAriv">${el.departure}>${el.arrival}</span>
+                <span id="heureTrip">${new Date(el.date).getHours()}:${new Date(el.date).getMinutes()}</span>
+                <span id="price">${el.price}€</span>
+                <button class="buttonBook">Book</button>
+            </div>
+          `
+        });
+      } 
+  });
+});
+function selectTrip() {
+  const results = document.querySelector('.trip');
+  results.parentNode.querySelectorAll('.buttonBook').forEach(el => {
+    el.addEventListener('click', function() {
+      console.log('test')
+  });
 })
+}
