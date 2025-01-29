@@ -1,5 +1,4 @@
 //cliquer sur navigation cart pour afficher les carts dans le panier et faire appeler mehode get sur les collections carts 
-
 fetch("http://localhost:3000/carts")
     .then(response=> response.json())
     .then(data => {
@@ -18,26 +17,51 @@ fetch("http://localhost:3000/carts")
                 const heure=date.getHours();
                 const mins=date.getMinutes();
                 const Price=trip.tripId.price;
+                const Idtrip=trip._id;
                 totalPrice+=Price;
                 document.querySelector('.alltrips').innerHTML+=`<div class="tripSelect">
                   <span id="cartTrip">${depart}>${arrival}</span>
                   <span id="cartHeure">${heure}:${mins}</span>
                   <span id="cartPrice">${Price}€</span>
+                  <p id="Idtrip">${Idtrip}<p>
                   <button id="delete">x</button></div>`
                 });
                 document.querySelector(".myCarts").style.display = "flex";
                 document.querySelector('#totalPrice').textContent=`Total: ${totalPrice}€`;
+                DeleteCart();
             }
         });
+
+
+//delete button function
+function DeleteCart(){
+    const deleteButtons = document.querySelectorAll("#delete");
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const tripElement=this.parentNode.parentNode;
+            let idtripValue = document.getElementById("Idtrip").textContent;
+            
+            tripElement.remove();
+            document.querySelector('#totalPrice').textContent=`Total:`;
+
+            fetch('http://localhost:3000/carts', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({_id: idtripValue})
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+        });
+    });
+}
+
+
 
 
 //cliquer sur navigation booking pour afficher la page html booking et faire appeler methode get sur les collections bookings 
 document.querySelector('#bookingNav').addEventListener('click',function(){
 
 
-})
-
-//cliquer sur le button de delete de supprimer le trip dans le panier 
-document.querySelector("#delete").addEventListener('click',function(){
-    
 })

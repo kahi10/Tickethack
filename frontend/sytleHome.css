@@ -88,7 +88,7 @@ p{
 }
 
 .divResult{
-    width: 15vw;
+    width: 19vw;
     height: auto;
     background-color: white;
     text-align: center;
@@ -141,30 +141,32 @@ input[type="date"]{
     cursor: pointer;
   }
 
-.trips{
+
+.trip{
     background-color:rgb(231, 198, 229);
-    height: 4vh;
-    width: 95%;
+    width: auto;
+    height: 3vh;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
-    align-items: center;
-    font-size: 0.8em;
-    margin: auto;
-    border: none;
+    justify-content:space-around;
+    margin: 2px;
 }
 .buttonBook {
     height: 3vh;
-    width: 3vw;
+    width: 2vw;
+    font-size:10px;
     color:white;
     background-color: #008E97;
-    align-self:flex-end;
-    margin:1px;
+    align-items: center;
     border: none;
-    font-size: 1em;
-    align-self:flex-end;
+    margin: 0;
+    padding: 0;
     
 }
+
+.buttonBook:hover {
+    cursor: pointer;
+  }
 
 #notFound{
     align-items: center;
@@ -172,13 +174,13 @@ input[type="date"]{
 
 
 .cartvide{
-    background-color: white;
-  margin: 30vh auto; /* Marge verticale pour centrer la div cartvide */
+  background-color: white;
+  margin: 30vh auto; 
   width: 50%;
   height: 20vh;
-  text-align: center;  /* Centre le texte horizontalement */
-  display: flex;       /* Utilise flexbox pour le centrage */
-  justify-content: center; /* Centre le contenu horizontalement */
+  text-align: center;  
+  display: flex;  
+  justify-content: center; 
   align-items: center
 }
 p{
