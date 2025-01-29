@@ -97,6 +97,8 @@ p{
     flex-direction: column ;
     justify-content:center;
     padding: 10px;
+    overflow: auto;
+    scroll-behavior: smooth;
 
 }
 img {
