@@ -144,16 +144,17 @@ input[type="date"]{
 
 .trip{
     background-color:rgb(231, 198, 229);
-    width: auto;
-    height: 3vh;
+    width: 100%;
+    height: 5vh;
     display:flex;
     flex-direction: row;
     justify-content:space-between;
-    margin: 1px;
+    margin: 5px;
+
 }
 .buttonBook {
     height: 3vh;
-    width: 2vw;
+    width: 2.5vw;
     font-size:10px;
     color:white;
     background-color: #008E97;
@@ -185,6 +186,9 @@ input[type="date"]{
 p{
     line-height: 45px;
 
+}
+#Idtrip{
+    display: none;
 }
 
 

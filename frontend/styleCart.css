@@ -94,7 +94,9 @@ body{
 #delete:hover{
     cursor: pointer;
 }
-
+#purchaseButton{
+    cursor: pointer;
+}
 
 .tripSelect{
     width: 100%;
