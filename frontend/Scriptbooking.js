@@ -1,4 +1,4 @@
-fetch('https://tickethack-9xnsiqain-kahis-projects-a3b97b98.vercel.app/bookings')
+fetch('https://tickethack-eight.vercel.app/bookings')
 .then(response => response.json())
 .then(trips => {
     //console.log(trips)

@@ -10,7 +10,7 @@ function setTodayDate() {
   }
 
   window.onload = setTodayDate;
-  BACKEND_URL = 'https://tickethack-9xnsiqain-kahis-projects-a3b97b98.vercel.app';
+  BACKEND_URL = 'https://tickethack-eight.vercel.app/';
 
 //cliquer sur le butoon Reseach recuperer les champs des saisir pour la ville départ et la ville arrivée 
 document.querySelector(".buttonReseach").addEventListener('click', function () {
