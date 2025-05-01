@@ -46,8 +46,6 @@ body{
 }
 
 .myBookings{
-    height: auto;
-    width: 56vw;
     background-color:white;
     margin-top: 15%;
     margin-left: auto;
@@ -62,16 +60,15 @@ body{
 
 }
 
-
 .bookingSelect{
-    width: 65%;
     height: 6vh;
+    width: 80%;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
     background-color:#E7DADA;
     align-items: center;
-    margin-bottom: 2%;
+    margin-bottom: 20px;
     border-radius:5px;
 }
 
@@ -83,20 +80,18 @@ body{
     margin-right: 10px;
 }
 
-
 .bookingvide{
-    background-color: white;
+  background-color: white;
   margin: 30vh auto; 
-  width: 50%;
+  width: 60%;
   height: 20vh;
   text-align: center;  
-  display: flex;       
-  justify-content: center; 
-  align-items: center
+}
+#greetingMessage {
+    color: green;
 }
 p{
     line-height: 45px;
-
 }
 
 

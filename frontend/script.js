@@ -26,7 +26,7 @@ document.querySelector(".buttonReseach").addEventListener('click', function () {
   fetch(`http://localhost:3000/trips/${cityDepart}/${cityArrivel}/${cityDate}`)
   .then(response => response.json())
   .then(data => {
-      if (!data.trips.length) {
+      if (!data.trips?.length) {
         notFoundHTML();
       } else {
         document.querySelector('.divResult').innerHTML = '';
