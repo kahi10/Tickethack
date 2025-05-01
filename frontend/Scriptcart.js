@@ -1,5 +1,6 @@
 //cliquer sur navigation cart pour afficher les carts dans le panier et faire appeler mehode get sur les collections carts 
-fetch("http://localhost:3000/carts")
+BACKEND_URL = 'https://tickethack-9xnsiqain-kahis-projects-a3b97b98.vercel.app';
+fetch(`${BACKEND_URL}/carts`)
     .then(response=> response.json())
     .then(data => {
         if(!data.result){
@@ -49,7 +50,7 @@ function DeleteCart(){
             tripElement.remove();
             document.querySelector('#totalPrice').textContent=`Total:${totalPrice}`;
 
-            fetch('http://localhost:3000/carts', {
+            fetch(`${BACKEND_URL}/carts`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({_id: idtripValue})
@@ -72,7 +73,7 @@ function selectBooking() {
         const trips = document.querySelectorAll('.tripSelect');
         const idTripValue = document.querySelectorAll('.idTrip').textContent;
         trips.forEach(trip=>{
-            fetch('http://localhost:3000/bookings', {
+            fetch(`${BACKEND_URL}/bookings`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ tripId: idTripValue, reservationDate: new Date()}) 

@@ -10,6 +10,7 @@ function setTodayDate() {
   }
 
   window.onload = setTodayDate;
+  BACKEND_URL = 'https://tickethack-9xnsiqain-kahis-projects-a3b97b98.vercel.app';
 
 //cliquer sur le butoon Reseach recuperer les champs des saisir pour la ville départ et la ville arrivée 
 document.querySelector(".buttonReseach").addEventListener('click', function () {
@@ -23,7 +24,7 @@ document.querySelector(".buttonReseach").addEventListener('click', function () {
   if (!cityDepart || !cityArrivel || !cityDate) {
     notFoundHTML();
   }
-  fetch(`http://localhost:3000/trips/${cityDepart}/${cityArrivel}/${cityDate}`)
+  fetch(`${BACKEND_URL}/trips/${cityDepart}/${cityArrivel}/${cityDate}`)
   .then(response => response.json())
   .then(data => {
       if (!data.trips?.length) {
@@ -51,7 +52,7 @@ function selectTrip() {
     el.addEventListener('click', function() {
       idTrip = this.parentNode.querySelector('#Idtrip').textContent
       console.log(idTrip)
-      fetch('http://localhost:3000/carts', {
+      fetch(`${BACKEND_URL}/carts`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({_id: idTrip})
