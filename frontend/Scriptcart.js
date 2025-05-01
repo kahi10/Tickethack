@@ -1,5 +1,5 @@
 //cliquer sur navigation cart pour afficher les carts dans le panier et faire appeler mehode get sur les collections carts 
-BACKEND_URL = 'https://tickethack-eight.vercel.app/';
+BACKEND_URL = 'https://tickethack-eight.vercel.app';
 fetch(`${BACKEND_URL}/carts`)
     .then(response=> response.json())
     .then(data => {
